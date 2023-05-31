@@ -5,7 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Product;
 use Illuminate\Database\Seeder;
-use Illuminate\Foundation\Auth\User;
+use App\Models\User;
 
 class DatabaseSeeder extends Seeder
 {
@@ -25,15 +25,15 @@ class DatabaseSeeder extends Seeder
             'email'=>'john@gmail.com',
             'password'=>bcrypt("abcd"),
         ]);
-        Product::factory()->create([
+        Product::create([
             'name'=>'Nike Shoes',
-            'seller_id'=>$user->id(),
+            'seller_id'=>$user->id,
             'price'=>5000.99,
             'description' => 'Size: 40, 41',
         ]);
-        Product::factory()->create([
+        Product::create([
             'name'=>'Vans Shoes',
-            'seller_id'=>$user->id(),
+            'seller_id'=>$user->id,
             'price'=>4000.99,
             'description' => 'Size: 40, 41',
         ]);

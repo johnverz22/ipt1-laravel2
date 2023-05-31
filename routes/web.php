@@ -1,8 +1,11 @@
 <?php
 
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\UserController;
+use App\Models\Cart;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +29,16 @@ Auth::routes();
 //List of user routes
 Route::middleware(['user'])->group(function(){
     Route::get('/home', [UserController::class, 'index'])->name('user.home');
+    Route::get('/cart', [CartController::class, 'index']);
+    Route::post('/checkout', function(Request $request){
+         $request->collect('carts')->each(function(array $cart){
+            var_dump($cart["id"] );
+         });
+        
+       
+
+        
+    });
     //other routes for any user type
 });
 
